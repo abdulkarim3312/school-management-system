@@ -12,6 +12,8 @@ use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
+
+use App\Http\Controllers\Backend\Student\StudentRegController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -195,6 +197,13 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified'])
 
         Route::get('designation/delete/{id}', [DesignationController::class, 'DesignationDelete'] )->name('designation.delete');
            
+    });
+
+    Route::prefix('students')->group(function(){
+        Route::get('/reg/view', [StudentRegController::class, 'StudentRegView'] )->name('student.registration.view');
+        Route::get('/reg/add', [StudentRegController::class, 'StudentRegAdd'] )->name('student.registration.add');
+        Route::post('/reg/store', [StudentRegController::class, 'StudentRegStore'] )->name('store.student.registration');
+
     });
 
 }); 
