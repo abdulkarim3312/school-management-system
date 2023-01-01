@@ -17,11 +17,13 @@ use Illuminate\Support\Facades\DB;
 class StudentRegController extends Controller
 {
     public function StudentRegView()
-    {
-        $data['allData'] = AssignStudent::all();
+    {   
         $data['years']   = StudentYear::all();
         $data['classes'] = StudentClass::all();
-        $data['groups']  = StudentGroup::all();
+        $data['year_id']   = StudentYear::orderBy('id', 'desc')->first()->id;
+        $data['class_id']   = StudentClass::orderBy('id', 'desc')->first()->id;
+        // dd($data['class_id']);
+        $data['allData'] = AssignStudent::where('year_id', $data['year_id'])->where('class_id', $data['class_id'])->get();
         return view('backend.student.student_reg.student_view', $data);
     }
 
@@ -121,6 +123,29 @@ class StudentRegController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('student.registration.view')->with($notification);
+    }
+
+    public function StudentClassWise(Request $request)
+    {
+        $data['years']   = StudentYear::all();
+        $data['classes'] = StudentClass::all();
+        $data['year_id']   = $request->year_id;
+        $data['class_id']   = $request->class_id;
+        // dd($data['class_id']);
+        $data['allData'] = AssignStudent::where('year_id', $request->year_id)->where('class_id', $request->class_id)->get();
+        return view('backend.student.student_reg.student_view', $data);
+    }
+
+    public function StudentRegEdit($student_id)
+    {
+        $data['years']   = StudentYear::all();
+        $data['classes'] = StudentClass::all();
+        $data['groups']  = StudentGroup::all();
+        $data['shifts']  = StudentShift::all();
+
+        $data['editData']  = AssignStudent::with(['student'])->where('student_id', $student_id)->first();
+        dd($data['editData']->toArray());
+        return view('backend.student.student_reg.student_edit', $data);
     }
     
 }

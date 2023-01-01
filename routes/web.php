@@ -198,11 +198,17 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified'])
         Route::get('designation/delete/{id}', [DesignationController::class, 'DesignationDelete'] )->name('designation.delete');
            
     });
-
+    // student management
     Route::prefix('students')->group(function(){
         Route::get('/reg/view', [StudentRegController::class, 'StudentRegView'] )->name('student.registration.view');
+
         Route::get('/reg/add', [StudentRegController::class, 'StudentRegAdd'] )->name('student.registration.add');
+
         Route::post('/reg/store', [StudentRegController::class, 'StudentRegStore'] )->name('store.student.registration');
+
+        Route::get('/year/class/wise', [StudentRegController::class, 'StudentClassWise'] )->name('student.year.class.wise');
+
+        Route::get('/reg/edit/{student_id}', [StudentRegController::class, 'StudentRegEdit'] )->name('student.registration.edit');
 
     });
 
