@@ -8,7 +8,6 @@
       <!-- Main content -->
       <section class="content">
         <div class="row">
-          
           <div class="col-12">
             <div class="box bb-3 border-warning">
               <div class="box-header">
@@ -99,7 +98,8 @@
                                 <td>{{ $value['student']['code'] }}</td>
                                 <td>
                                     <a href="{{ route('student.registration.edit', $value->student_id) }}" class="btn btn-info">Edit</a>
-                                    <a href="{{ route('student.year.delete', ['id' => $value->id]) }}" class="btn btn-danger" id="delete">Delete</a>
+                                    <a href="{{ route('student.registration.promotion', $value->student_id) }}" class="btn btn-success">Promotion</a>
+                                    <a href="{{ route('student.registration.details', $value->student_id) }}" class="btn btn-success">View</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -143,7 +143,7 @@
                                 <td>{{ $value['student']['code'] }}</td>
                                 <td>
                                     <a href="{{ route('student.registration.edit', $value->student_id) }}" class="btn btn-info">Edit</a>
-                                    <a href="{{ route('student.year.delete', ['id' => $value->id]) }}" class="btn btn-danger" id="delete">Delete</a>
+                                    <a href="{{ route('student.registration.details', $value->student_id) }}" class="btn btn-success">Promotion</a>
                                 </td>
                             </tr>
                         @endforeach

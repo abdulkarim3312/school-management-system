@@ -9,7 +9,7 @@
     <!-- Basic Forms -->
         <div class="box">
         <div class="box-header with-border">
-            <h4 class="box-title">Edit Student</h4>
+            <h4 class="box-title">Student Promotion</h4>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -209,7 +209,7 @@
                                 </div>	
                             </div> {{-- End 5th row  --}}	
                             <div class="text-xs-right">
-                                <input type="submit" class="btn btn-rounded btn-info mb-5" value="Update">
+                                <input type="submit" class="btn btn-rounded btn-info mb-5" value="Promotion">
                             </div>   
                         </div>   
                     </div>
