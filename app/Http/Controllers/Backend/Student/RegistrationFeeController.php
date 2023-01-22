@@ -40,7 +40,8 @@ class RegistrationFeeController extends Controller
 
 
         foreach ($allStudent as $key => $v) {
-            $registrationfee = FeeCategoryAmount::where('fee_category_id','id')->where('class_id',$v->class_id)->first();
+            $registrationfee = FeeCategoryAmount::where('fee_category_id','1')->where('class_id',$v->class_id)->first();
+            dd($registrationfee);
             $color = 'success';
             $html[$key]['tdsource']  = '<td>'.($key+1).'</td>';
             $html[$key]['tdsource'] .= '<td>'.$v['student']['id_no'].'</td>';
